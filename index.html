@@ -7,7 +7,8 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #000;
+      color: #fff;
       margin: 0;
       padding: 0;
       display: flex;
@@ -17,17 +18,17 @@
     }
 
     .container {
-      background-color: #fff;
+      background-color: #111;
       padding: 30px 40px;
-      border: 2px solid #990000;
+      border: 2px solid #fff;
       border-radius: 10px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(153, 0, 0, 0.3);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
       max-width: 500px;
     }
 
     h1 {
-      color: #990000;
+      color: #fff;
       margin-bottom: 10px;
     }
 
@@ -39,7 +40,7 @@
     .warning-blink {
       font-weight: bold;
       color: #fff;
-      background-color: #990000;
+      background-color: #c40000;
       padding: 10px;
       border-radius: 5px;
       animation: blink 1.5s infinite;
@@ -58,23 +59,25 @@
     #countdown {
       font-weight: bold;
       font-size: 1.4em;
-      color: #333;
+      color: #fff;
     }
 
     .emergency-btn {
       display: inline-block;
       margin-top: 20px;
       padding: 12px 24px;
-      background-color: #d10000;
-      color: white;
+      background-color: #fff;
+      color: #000;
       text-decoration: none;
       border-radius: 8px;
       font-size: 1em;
-      transition: background-color 0.3s ease;
+      font-weight: bold;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .emergency-btn:hover {
-      background-color: #b00000;
+      background-color: #c40000;
+      color: #fff;
     }
   </style>
 </head>
@@ -93,23 +96,24 @@
   </div>
 
   <script>
-    // Datum und Uhrzeit für das Ende der Wartung setzen (z. B. 8. Juni 2025, 18:00)
-    const wartungsende = new Date("2025-06-08T18:00:00").getTime();
+    // Starte 12-Stunden-Countdown ab Seitenaufruf
+    const startZeit = new Date().getTime();
+    const endZeit = startZeit + 12 * 60 * 60 * 1000; // 12 Stunden in Millisekunden
 
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
       const jetzt = new Date().getTime();
-      const diff = wartungsende - jetzt;
+      const diff = endZeit - jetzt;
 
       if (diff <= 0) {
         countdownEl.innerText = "Wartung abgeschlossen.";
         return;
       }
 
-      const stunden = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minuten = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const sekunden = Math.floor((diff % (1000 * 60)) / 1000);
+      const stunden = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minuten = Math.floor((diff / (1000 * 60)) % 60);
+      const sekunden = Math.floor((diff / 1000) % 60);
 
       countdownEl.innerText = `${stunden} Std ${minuten} Min ${sekunden} Sek`;
     }
