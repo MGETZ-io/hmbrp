@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HMBRP Notruf Hamburg – Wartungsarbeiten</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border: 2px solid #990000;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(153, 0, 0, 0.3);
+      max-width: 500px;
+    }
+
+    h1 {
+      color: #990000;
+      margin-bottom: 10px;
+    }
+
+    .info-text {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .warning-blink {
+      font-weight: bold;
+      color: #fff;
+      background-color: #990000;
+      padding: 10px;
+      border-radius: 5px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .countdown-box {
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+
+    #countdown {
+      font-weight: bold;
+      font-size: 1.4em;
+      color: #333;
+    }
+
+    .emergency-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #d10000;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .emergency-btn:hover {
+      background-color: #b00000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔧 Wartungsarbeiten</h1>
+    <p class="info-text">Die Systeme von HMBRP Notruf Hamburg werden derzeit gewartet.</p>
+    <div class="warning-blink">Bitte haben Sie Verständnis.</div>
+
+    <div class="countdown-box">
+      <p>Voraussichtliche Wiederherstellung in:</p>
+      <div id="countdown">–</div>
+    </div>
+
+    <a class="emergency-btn" href="mailto:notruf@hmbrp.de?subject=Notfallkontakt">🚨 Notfallkontakt</a>
+  </div>
+
+  <script>
+    // Datum und Uhrzeit für das Ende der Wartung setzen (z. B. 8. Juni 2025, 18:00)
+    const wartungsende = new Date("2025-06-08T18:00:00").getTime();
+
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const jetzt = new Date().getTime();
+      const diff = wartungsende - jetzt;
+
+      if (diff <= 0) {
+        countdownEl.innerText = "Wartung abgeschlossen.";
+        return;
+      }
+
+      const stunden = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minuten = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const sekunden = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.innerText = `${stunden} Std ${minuten} Min ${sekunden} Sek`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
