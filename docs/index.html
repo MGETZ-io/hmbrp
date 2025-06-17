@@ -1,80 +1,50 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NWRP Hilfe</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <title>NWRP Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background-color: #121212;
-      color: #f0f0f0;
+      background: #121212;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
-    .section-bg {
-      background-color: #1f1f1f;
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .login-button {
+      background: #5865F2;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .login-button:hover {
+      background: #4752c4;
     }
   </style>
 </head>
-<body class="min-h-screen">
-  <div class="max-w-4xl mx-auto py-10 px-6">
-    <h1 class="text-4xl font-bold mb-8 text-white">📘 NWRP Hilfe & Dokumentation</h1>
+<body>
+  <h1>NWRP Login</h1>
 
-    <!-- Funkgerät -->
-    <div class="mb-6">
-      <button onclick="toggleSection('funk-section')" class="w-full text-left bg-[#1f1f1f] p-4 rounded-lg hover:bg-[#2a2a2a] transition">
-        <h2 class="text-xl font-semibold">🎙️ Funkgerät (privat)</h2>
-      </button>
-      <div id="funk-section" class="hidden mt-2 p-4 section-bg rounded-lg">
-        <h3 class="text-lg font-bold mb-2">Was ist das Funkgerät?</h3>
-        <p class="mb-4">Das Funkgerät ermöglicht Spielern, unabhängig von ihrer Position miteinander zu kommunizieren.</p>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=1384584668841640126&redirect_uri=https%3A%2F%2Fdeine-domain.de%2Fdiscord-auth.html&response_type=token&scope=identify"
+     class="login-button">
+    Login mit Discord
+  </a>
 
-        <h3 class="text-lg font-bold mb-2">Verbindung & Kanäle</h3>
-        <p>Wähle einen Kanal (1–999), um dich mit anderen Spielern auf dem gleichen Kanal zu verbinden.</p>
-      </div>
-    </div>
-
-    <!-- Leitstellensoftware -->
-    <div class="mb-6">
-      <button onclick="toggleSection('leitstelle-section')" class="w-full text-left bg-[#1f1f1f] p-4 rounded-lg hover:bg-[#2a2a2a] transition">
-        <h2 class="text-xl font-semibold">🖥️ Leitstellen-Software</h2>
-      </button>
-      <div id="leitstelle-section" class="hidden mt-2 p-4 section-bg rounded-lg">
-        <h3 class="text-lg font-bold mb-2">Allgemein</h3>
-        <p class="mb-4">Die Leitstellen-Software dient der Einsatzkoordinierung für verschiedene Fraktionen.</p>
-
-        <h3 class="text-lg font-bold mb-2">Polizei</h3>
-        <ul class="list-disc list-inside mb-4">
-          <li>Funkbindung mit Streifenwagen</li>
-          <li>Vorgangsdokumentation</li>
-        </ul>
-
-        <h3 class="text-lg font-bold mb-2">ADAC</h3>
-        <ul class="list-disc list-inside mb-4">
-          <li>Abschleppaufträge verwalten</li>
-          <li>Werkstattwahl über das System</li>
-        </ul>
-
-        <h3 class="text-lg font-bold mb-2">Feuerwehr</h3>
-        <ul class="list-disc list-inside mb-4">
-          <li>Brandmeldungen empfangen</li>
-          <li>Fahrzeug- und Schlauchstatus verwalten</li>
-        </ul>
-
-        <h3 class="text-lg font-bold mb-2">Medic</h3>
-        <ul class="list-disc list-inside">
-          <li>Patientenprotokolle erstellen</li>
-          <li>Datenübergabe an Krankenhäuser</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- JS für das Ein-/Ausklappen -->
-  <script>
-    function toggleSection(id) {
-      const section = document.getElementById(id);
-      section.classList.toggle('hidden');
-    }
-  </script>
+  <p style="margin-top: 20px; opacity: 0.7;">Du wirst danach zur Doku weitergeleitet</p>
 </body>
 </html>
