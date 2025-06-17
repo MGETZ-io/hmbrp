@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>NWRP Dokumentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    nav {
+      background: #1e1e1e;
+      width: 280px;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    nav h2 {
+      margin-top: 0;
+      font-size: 1.4em;
+      color: #ccc;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li {
+      margin: 10px 0;
+    }
+
+    nav a {
+      color: #9ad0ff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 40px;
+      background: #121212;
+      overflow-y: auto;
+    }
+
+    .article {
+      display: none;
+    }
+
+    .article.active {
+      display: block;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h2>Hilfe-Kategorien</h2>
+    <ul>
+      <li><a onclick="showArticle('funk')">📻 Funkgerät (Privat)</a></li>
+      <li><a onclick="showArticle('leitstelle-polizei')">👮 Leitstelle – Polizei</a></li>
+      <li><a onclick="showArticle('leitstelle-feuerwehr')">🚒 Leitstelle – Feuerwehr</a></li>
+      <li><a onclick="showArticle('leitstelle-medic')">🩺 Leitstelle – Medic</a></li>
+      <li><a onclick="showArticle('leitstelle-adac')">🚗 Leitstelle – ADAC</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Willkommen zur NWRP Dokumentation</h1>
+    <p>Wähle links eine Kategorie, um Hilfeartikel zu sehen.</p>
+
+    <section id="funk" class="article">
+      <h2>Funkgerät (Privat)</h2>
+      <p>Hier erfährst du, wie du das private Funkgerät verwendest. Beispiel: Kanalwahl, Push-To-Talk, Lautstärke.</p>
+    </section>
+
+    <section id="leitstelle-polizei" class="article">
+      <h2>Leitstellen-Software – Polizei</h2>
+      <p>Benutzung der Polizeileitstelle: Einsätze, Fahrzeuge, Status-Meldungen und Kommunikation.</p>
+    </section>
+
+    <section id="leitstelle-feuerwehr" class="article">
+      <h2>Leitstellen-Software – Feuerwehr</h2>
+      <p>Feuerwehrleitstelle erklärt: Einsatzannahme, Fahrzeugalarmierung und Lagemeldung.</p>
+    </section>
+
+    <section id="leitstelle-medic" class="article">
+      <h2>Leitstellen-Software – Medic</h2>
+      <p>Medizinische Einsätze erfassen, Notfallberichte schreiben und Fahrzeugstatus setzen.</p>
+    </section>
+
+    <section id="leitstelle-adac" class="article">
+      <h2>Leitstellen-Software – ADAC</h2>
+      <p>Hilfe bei Pannen, Fahrzeugabschleppung und Kommunikation mit Kunden über die ADAC-Zentrale.</p>
+    </section>
+  </main>
+
+  <script>
+    function showArticle(id) {
+      const articles = document.querySelectorAll('.article');
+      articles.forEach(el => el.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
