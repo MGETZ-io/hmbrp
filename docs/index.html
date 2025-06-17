@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NWRP Docs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen bg-white border-r p-4">
+      <h2 class="text-xl font-bold mb-6">NWRP Docs</h2>
+      <nav class="space-y-2">
+        <h3 class="text-sm font-semibold uppercase text-gray-500">Funkgerät</h3>
+        <ul class="ml-2 mb-4">
+          <li><a href="#funk-einleitung" class="text-blue-600 hover:underline">Was ist das Funkgerät?</a></li>
+          <li><a href="#funk-verbindung">Verbindung & Kanäle</a></li>
+        </ul>
+
+        <h3 class="text-sm font-semibold uppercase text-gray-500">Leitstellensoftware</h3>
+        <ul class="ml-2">
+          <li><a href="#leitstelle-allgemein">Allgemein</a></li>
+          <li class="ml-2"><a href="#leitstelle-polizei">Polizei</a></li>
+          <li class="ml-2"><a href="#leitstelle-adac">ADAC</a></li>
+          <li class="ml-2"><a href="#leitstelle-feuerwehr">Feuerwehr</a></li>
+          <li class="ml-2"><a href="#leitstelle-medic">Medic</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <main class="flex-1 p-8 overflow-y-auto">
+      <section id="funk-einleitung">
+        <h1 class="text-2xl font-bold mb-2">Was ist das Funkgerät?</h1>
+        <p>Das Funkgerät erlaubt es Spielern, sich über verschiedene Kanäle zu koordinieren – auch über weite Entfernungen.</p>
+      </section>
+
+      <section id="funk-verbindung" class="mt-8">
+        <h2 class="text-xl font-semibold mb-2">Verbindung & Kanäle</h2>
+        <p>Jeder Spieler kann einen Kanal zwischen 1 und 999 wählen. Der Kanal muss mit anderen Spielern übereinstimmen.</p>
+      </section>
+
+      <section id="leitstelle-allgemein" class="mt-12">
+        <h2 class="text-xl font-semibold mb-2">Leitstellensoftware – Allgemein</h2>
+        <p>Die Leitstellensoftware ist für die Einsatzkoordination zuständig und funktioniert für alle Fraktionen ähnlich.</p>
+      </section>
+
+      <section id="leitstelle-polizei" class="mt-8">
+        <h3 class="text-lg font-bold">Polizei</h3>
+        <ul class="list-disc pl-5">
+          <li>Funkbindung mit Streifenwagen</li>
+          <li>Vorgangsdokumentation mit Zuweisung</li>
+        </ul>
+      </section>
+
+      <section id="leitstelle-adac" class="mt-8">
+        <h3 class="text-lg font-bold">ADAC</h3>
+        <ul class="list-disc pl-5">
+          <li>Einsätze aus der Warteschlange annehmen</li>
+          <li>Werkstatt-Ziel kann ausgewählt werden</li>
+        </ul>
+      </section>
+
+      <section id="leitstelle-feuerwehr" class="mt-8">
+        <h3 class="text-lg font-bold">Feuerwehr</h3>
+        <ul class="list-disc pl-5">
+          <li>Brandmeldungen direkt im System sichtbar</li>
+          <li>Schlauchmanagement & Fahrzeugstatus</li>
+        </ul>
+      </section>
+
+      <section id="leitstelle-medic" class="mt-8 mb-16">
+        <h3 class="text-lg font-bold">Medic</h3>
+        <ul class="list-disc pl-5">
+          <li>Patientendaten werden automatisch übernommen</li>
+          <li>Eintrag ins digitale Einsatzprotokoll</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
