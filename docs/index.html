@@ -3,81 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NWRP Docs</title>
+  <title>NWRP Hilfe</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .section-bg {
+      background-color: #1f1f1f;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-  <div class="flex">
-    <!-- Sidebar -->
-    <aside class="w-64 h-screen bg-white border-r p-4">
-      <h2 class="text-xl font-bold mb-6">NWRP Docs</h2>
-      <nav class="space-y-2">
-        <h3 class="text-sm font-semibold uppercase text-gray-500">Funkgerät</h3>
-        <ul class="ml-2 mb-4">
-          <li><a href="#funk-einleitung" class="text-blue-600 hover:underline">Was ist das Funkgerät?</a></li>
-          <li><a href="#funk-verbindung">Verbindung & Kanäle</a></li>
-        </ul>
+<body class="min-h-screen">
+  <div class="max-w-4xl mx-auto py-10 px-6">
+    <h1 class="text-4xl font-bold mb-8 text-white">📘 NWRP Hilfe & Dokumentation</h1>
 
-        <h3 class="text-sm font-semibold uppercase text-gray-500">Leitstellensoftware</h3>
-        <ul class="ml-2">
-          <li><a href="#leitstelle-allgemein">Allgemein</a></li>
-          <li class="ml-2"><a href="#leitstelle-polizei">Polizei</a></li>
-          <li class="ml-2"><a href="#leitstelle-adac">ADAC</a></li>
-          <li class="ml-2"><a href="#leitstelle-feuerwehr">Feuerwehr</a></li>
-          <li class="ml-2"><a href="#leitstelle-medic">Medic</a></li>
-        </ul>
-      </nav>
-    </aside>
+    <!-- Funkgerät -->
+    <div class="mb-6">
+      <button onclick="toggleSection('funk-section')" class="w-full text-left bg-[#1f1f1f] p-4 rounded-lg hover:bg-[#2a2a2a] transition">
+        <h2 class="text-xl font-semibold">🎙️ Funkgerät (privat)</h2>
+      </button>
+      <div id="funk-section" class="hidden mt-2 p-4 section-bg rounded-lg">
+        <h3 class="text-lg font-bold mb-2">Was ist das Funkgerät?</h3>
+        <p class="mb-4">Das Funkgerät ermöglicht Spielern, unabhängig von ihrer Position miteinander zu kommunizieren.</p>
 
-    <!-- Content -->
-    <main class="flex-1 p-8 overflow-y-auto">
-      <section id="funk-einleitung">
-        <h1 class="text-2xl font-bold mb-2">Was ist das Funkgerät?</h1>
-        <p>Das Funkgerät erlaubt es Spielern, sich über verschiedene Kanäle zu koordinieren – auch über weite Entfernungen.</p>
-      </section>
+        <h3 class="text-lg font-bold mb-2">Verbindung & Kanäle</h3>
+        <p>Wähle einen Kanal (1–999), um dich mit anderen Spielern auf dem gleichen Kanal zu verbinden.</p>
+      </div>
+    </div>
 
-      <section id="funk-verbindung" class="mt-8">
-        <h2 class="text-xl font-semibold mb-2">Verbindung & Kanäle</h2>
-        <p>Jeder Spieler kann einen Kanal zwischen 1 und 999 wählen. Der Kanal muss mit anderen Spielern übereinstimmen.</p>
-      </section>
+    <!-- Leitstellensoftware -->
+    <div class="mb-6">
+      <button onclick="toggleSection('leitstelle-section')" class="w-full text-left bg-[#1f1f1f] p-4 rounded-lg hover:bg-[#2a2a2a] transition">
+        <h2 class="text-xl font-semibold">🖥️ Leitstellen-Software</h2>
+      </button>
+      <div id="leitstelle-section" class="hidden mt-2 p-4 section-bg rounded-lg">
+        <h3 class="text-lg font-bold mb-2">Allgemein</h3>
+        <p class="mb-4">Die Leitstellen-Software dient der Einsatzkoordinierung für verschiedene Fraktionen.</p>
 
-      <section id="leitstelle-allgemein" class="mt-12">
-        <h2 class="text-xl font-semibold mb-2">Leitstellensoftware – Allgemein</h2>
-        <p>Die Leitstellensoftware ist für die Einsatzkoordination zuständig und funktioniert für alle Fraktionen ähnlich.</p>
-      </section>
-
-      <section id="leitstelle-polizei" class="mt-8">
-        <h3 class="text-lg font-bold">Polizei</h3>
-        <ul class="list-disc pl-5">
+        <h3 class="text-lg font-bold mb-2">Polizei</h3>
+        <ul class="list-disc list-inside mb-4">
           <li>Funkbindung mit Streifenwagen</li>
-          <li>Vorgangsdokumentation mit Zuweisung</li>
+          <li>Vorgangsdokumentation</li>
         </ul>
-      </section>
 
-      <section id="leitstelle-adac" class="mt-8">
-        <h3 class="text-lg font-bold">ADAC</h3>
-        <ul class="list-disc pl-5">
-          <li>Einsätze aus der Warteschlange annehmen</li>
-          <li>Werkstatt-Ziel kann ausgewählt werden</li>
+        <h3 class="text-lg font-bold mb-2">ADAC</h3>
+        <ul class="list-disc list-inside mb-4">
+          <li>Abschleppaufträge verwalten</li>
+          <li>Werkstattwahl über das System</li>
         </ul>
-      </section>
 
-      <section id="leitstelle-feuerwehr" class="mt-8">
-        <h3 class="text-lg font-bold">Feuerwehr</h3>
-        <ul class="list-disc pl-5">
-          <li>Brandmeldungen direkt im System sichtbar</li>
-          <li>Schlauchmanagement & Fahrzeugstatus</li>
+        <h3 class="text-lg font-bold mb-2">Feuerwehr</h3>
+        <ul class="list-disc list-inside mb-4">
+          <li>Brandmeldungen empfangen</li>
+          <li>Fahrzeug- und Schlauchstatus verwalten</li>
         </ul>
-      </section>
 
-      <section id="leitstelle-medic" class="mt-8 mb-16">
-        <h3 class="text-lg font-bold">Medic</h3>
-        <ul class="list-disc pl-5">
-          <li>Patientendaten werden automatisch übernommen</li>
-          <li>Eintrag ins digitale Einsatzprotokoll</li>
+        <h3 class="text-lg font-bold mb-2">Medic</h3>
+        <ul class="list-disc list-inside">
+          <li>Patientenprotokolle erstellen</li>
+          <li>Datenübergabe an Krankenhäuser</li>
         </ul>
-      </section>
-    </main>
+      </div>
+    </div>
   </div>
+
+  <!-- JS für das Ein-/Ausklappen -->
+  <script>
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      section.classList.toggle('hidden');
+    }
+  </script>
 </body>
 </html>
