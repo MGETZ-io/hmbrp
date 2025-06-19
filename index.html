@@ -2,120 +2,215 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HMBRP Notruf Hamburg – Wartungsarbeiten</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nordwind RP – Willkommen</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: "Segoe UI", sans-serif;
+      background: #0d1117;
+      color: #f0f6fc;
+      scroll-behavior: smooth;
     }
-
-    .container {
-      background-color: #fff;
-      padding: 30px 40px;
-      border: 2px solid #990000;
-      border-radius: 10px;
+    header {
+      background: linear-gradient(to right, #0099ff, #6610f2);
+      padding: 3rem 2rem;
       text-align: center;
-      box-shadow: 0 0 20px rgba(153, 0, 0, 0.3);
-      max-width: 500px;
-    }
-
-    h1 {
-      color: #990000;
-      margin-bottom: 10px;
-    }
-
-    .info-text {
-      font-size: 1.1em;
-      margin-bottom: 20px;
-    }
-
-    .warning-blink {
-      font-weight: bold;
-      color: #fff;
-      background-color: #990000;
-      padding: 10px;
-      border-radius: 5px;
-      animation: blink 1.5s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .countdown-box {
-      margin: 20px 0;
-      font-size: 1.2em;
-    }
-
-    #countdown {
-      font-weight: bold;
-      font-size: 1.4em;
-      color: #333;
-    }
-
-    .emergency-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #d10000;
       color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 1em;
-      transition: background-color 0.3s ease;
     }
-
-    .emergency-btn:hover {
-      background-color: #b00000;
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 2px;
+    }
+    section {
+      padding: 5rem 2rem;
+      max-width: 800px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      color: #58a6ff;
+      margin-bottom: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🔧 Wartungsarbeiten</h1>
-    <p class="info-text">Die Systeme von HMBRP Notruf Hamburg werden derzeit gewartet.</p>
-    <div class="warning-blink">Bitte haben Sie Verständnis.</div>
 
-    <div class="countdown-box">
-      <p>Voraussichtliche Wiederherstellung in:</p>
-      <div id="countdown">–</div>
-    </div>
+  <header>
+    <h1>Nordwind RP (NWRP)</h1>
+    <p>Dein realistisches Roleplay-Erlebnis in Hamburg</p>
+  </header>
 
-    <a class="emergency-btn" href="mailto:notruf@hmbrp.de?subject=Notfallkontakt">🚨 Notfallkontakt</a>
-  </div>
+  <section id="willkommen">
+    <h2>Willkommen bei NWRP</h2>
+    <p>Nordwind RP ist ein hochwertiger Roleplay-Server mit Fokus auf Realismus, Community und Spielspaß. Bei uns erlebst du Hamburg wie nie zuvor – mit Polizei, Feuerwehr, Zivilleben und Wirtschaftssystem!</p>
+  </section>
+
+  <section id="regeln">
+    <h2>Unsere Regeln</h2>
+    <p>Wir legen Wert auf Fairness und Immersion. Dazu gehören: Kein FailRP, kein RDM/VDM, IC ≠ OOC, und respektvoller Umgang unter allen Mitspielern.</p>
+  </section>
+
+  <section id="features">
+    <h2>Besondere Features</h2>
+    <ul>
+      <li>🚓 Eigene Polizei- & Feuerwehr-Fahrzeuge</li>
+      <li>🏙️ Realistische Stadtumgebung (Hamburg)</li>
+      <li>💼 Wirtschaft mit Banken & Firmen</li>
+      <li>🎭 Whitelist-System & Charaktererstellung</li>
+      <li>📱 Eigene Ingame-Apps & Captive Portal</li>
+    </ul>
+  </section>
+
+  <section id="einstieg">
+    <h2>So steigst du ein</h2>
+    <p>Erstelle dir einen Charakter auf unserer Website und lade das NWRP-Modpack herunter. Danach kannst du dich direkt ins Roleplay stürzen!</p>
+  </section>
+
+  <section id="kontakt">
+    <h2>Kontakt & Community</h2>
+    <p>Besuche unseren <a href="https://discord.gg/S2apzd343K" target="_blank" style="color:#58a6ff;">Discord-Server</a> für Support, News und Bewerbung.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Nordwind RP – Powered by Hustensaft Management
+  </footer>
 
   <script>
-    // Datum und Uhrzeit für das Ende der Wartung setzen (z. B. 8. Juni 2025, 18:00)
-    const wartungsende = new Date("2025-06-08T18:00:00").getTime();
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
 
-    const countdownEl = document.getElementById("countdown");
-
-    function updateCountdown() {
-      const jetzt = new Date().getTime();
-      const diff = wartungsende - jetzt;
-
-      if (diff <= 0) {
-        countdownEl.innerText = "Wartung abgeschlossen.";
-        return;
-      }
-
-      const stunden = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minuten = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const sekunden = Math.floor((diff % (1000 * 60)) / 1000);
-
-      countdownEl.innerText = `${stunden} Std ${minuten} Min ${sekunden} Sek`;
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nordwind RP – Willkommen</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #0d1117;
+      color: #f0f6fc;
+      scroll-behavior: smooth;
     }
+    header {
+      background: linear-gradient(to right, #0099ff, #6610f2);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 2px;
+    }
+    section {
+      padding: 5rem 2rem;
+      max-width: 800px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      color: #58a6ff;
+      margin-bottom: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+  <header>
+    <h1>Nordwind RP (NWRP)</h1>
+    <p>Dein realistisches Roleplay-Erlebnis in Hamburg</p>
+  </header>
+
+  <section id="willkommen">
+    <h2>Willkommen bei NWRP</h2>
+    <p>Nordwind RP ist ein hochwertiger Roleplay-Server mit Fokus auf Realismus, Community und Spielspaß. Bei uns erlebst du Hamburg wie nie zuvor – mit Polizei, Feuerwehr, Zivilleben und Wirtschaftssystem!</p>
+  </section>
+
+  <section id="regeln">
+    <h2>Unsere Regeln</h2>
+    <p>Wir legen Wert auf Fairness und Immersion. Dazu gehören: Kein FailRP, kein RDM/VDM, IC ≠ OOC, und respektvoller Umgang unter allen Mitspielern.</p>
+  </section>
+
+  <section id="features">
+    <h2>Besondere Features</h2>
+    <ul>
+      <li>🚓 Eigene Polizei- & Feuerwehr-Fahrzeuge</li>
+      <li>🏙️ Realistische Stadtumgebung (Hamburg)</li>
+      <li>💼 Wirtschaft mit Banken & Firmen</li>
+      <li>🎭 Whitelist-System & Charaktererstellung</li>
+      <li>📱 Eigene Ingame-Apps & Captive Portal</li>
+    </ul>
+  </section>
+
+  <section id="einstieg">
+    <h2>So steigst du ein</h2>
+    <p>Erstelle dir einen Charakter auf unserer Website und lade das NWRP-Modpack herunter. Danach kannst du dich direkt ins Roleplay stürzen!</p>
+  </section>
+
+  <section id="kontakt">
+    <h2>Kontakt & Community</h2>
+    <p>Besuche unseren <a href="https://discord.gg/S2apzd343K" target="_blank" style="color:#58a6ff;">Discord-Server</a> für Support, News und Bewerbung.</p>
+  </section>
+
+  <footer>
+    &copy; <button onclick="location.href='https://roleplay.hustensaft.org/gesetz/';">Das Gesetz!</button>
+    &copy; <button onclick="location.href='https://roleplay.hustensaft.org/docs/';">Das Hilfe-Handbuch!</button>
+    &copy; 2025 Nordwind RP – Powered by Hustensaft Management
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    sections.forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
