@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Login mit Google</title>
+  <meta name="google-signin-client_id" content="318864944508-h95a5j4ueb4cibiqp864dmepigpl20qb.apps.googleusercontent.com">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Login mit Google</h1>
+
+  <div id="g_id_onload"
+       data-client_id="318864944508-h95a5j4ueb4cibiqp864dmepigpl20qb.apps.googleusercontent.com"
+       data-context="signin"
+       data-ux_mode="popup"
+       data-callback="handleCredentialResponse"
+       data-auto_prompt="false">
+  </div>
+
+  <div class="g_id_signin"
+       data-type="standard"
+       data-size="large"
+       data-theme="outline"
+       data-text="signin_with"
+       data-shape="rectangular"
+       data-logo_alignment="left">
+  </div>
+
+  <script>
+    function handleCredentialResponse(response) {
+      const token = response.credential;
+
+      // Optional: JWT Payload auslesen
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      console.log("Eingeloggt als:", payload.name, payload.email);
+
+      // ✅ Weiterleitung zu start.html
+      window.location.href = "startseite.html";
+    }
+  </script>
+</body>
+</html>
