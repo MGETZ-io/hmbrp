@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>NWRP Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       background: #121212;
@@ -30,21 +30,39 @@
       font-size: 16px;
       cursor: pointer;
       text-decoration: none;
+      margin: 8px 0;
+      display: inline-block;
+      width: 200px;
+      text-align: center;
     }
 
     .login-button:hover {
       background: #4752c4;
+    }
+
+    .google-button {
+      background: #4285F4;
+    }
+
+    .google-button:hover {
+      background: #357ae8;
     }
   </style>
 </head>
 <body>
   <h1>NWRP Login</h1>
 
-  <a href="https://discord.com/api/oauth2/authorize?client_id=1384584668841640126&redirect_uri=https%3A%2F%2Froleplay.hustensaft.org%2Fgesetz%2Fdiscord-auth.html&response_type=token&scope=identify"
+  <a href="https://discord.com/api/oauth2/authorize?client_id=1384584668841640126&redirect_uri=https%3A%2F%2Froleplay.hustensaft.org%2Fdocs%2Fdiscord-auth.html&response_type=token&scope=identify"
      class="login-button">
     Login mit Discord
   </a>
 
-  <p style="margin-top: 20px; opacity: 0.7;">Du wirst danach zum Gesetzbuch weitergeleitet</p>
+  <a href="google-auth.html" class="login-button google-button">
+    Login mit Google
+  </a>
+
+  <p style="margin-top: 20px; opacity: 0.7;">
+    Du wirst danach zur jeweiligen Seite weitergeleitet
+  </p>
 </body>
 </html>
