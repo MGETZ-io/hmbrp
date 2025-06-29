@@ -213,173 +213,119 @@
     }
   }
 
-  /* Stream Player Styles */
-  #stream-hero {
-    background: #000;
-    padding: 1rem;
-    max-width: 1280px;
-    margin: 2rem auto 4rem;
-    border-radius: 12px;
-    box-shadow: 0 0 30px #ffa500;
-    position: relative;
-  }
-  #player {
-    width: 100%;
-    height: 720px;
-    border: none;
-    border-radius: 12px;
-  }
-  #switch-buttons {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+  /* Partner-Bereich */
+  .partner-container {
     display: flex;
-    gap: 12px;
-    background: rgba(18, 18, 18, 0.85);
-    padding: 6px 10px;
-    border-radius: 25px;
-    box-shadow: 0 0 15px #ffa500;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
   }
-  #switch-buttons img {
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    filter: brightness(0.7);
-    transition: filter 0.3s ease;
+  .partner-card {
+    background: #1f1f1f;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 160px;
+    text-align: center;
+    color: #eee;
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+    cursor: default;
+    transition: background 0.3s;
   }
-  #switch-buttons img.active,
-  #switch-buttons img:hover {
-    filter: brightness(1);
+  .partner-card img {
+    max-width: 100px;
+    margin-bottom: 0.5rem;
+    object-fit: contain;
   }
 </style>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-<header class="header">
-  <div class="logo">NWRP</div>
-  <nav>
-    <ul>
-      <li><a href="#home">Start</a></li>
-      <li><a href="#server">Server</a></li>
-      <li><a href="https://roleplay.hustensaft.org/gesetz/" target="_blank" rel="noopener noreferrer">RP Gesetz</a></li>
-      <li><a href="https://roleplay.hustensaft.org/docs/" target="_blank" rel="noopener noreferrer">Dokumentation</a></li>
-      <li><a href="#community">Community</a></li>
-      <li><a href="#sonderheiten">Sonderheiten</a></li>
-      <li><a href="#partner">Partner</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-      <li><a href="https://shop.hustensaft.org" target="_blank" rel="noopener noreferrer">Merch</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- Hier wird entweder Hero oder Stream Player eingeblendet -->
-<div id="content-placeholder"></div>
-
-<section id="server" class="server-section">
-  <h2>Unsere Plattformen</h2>
-  <div class="platforms">
-    <a href="https://www.twitch.tv/nordwindrp" target="_blank" rel="noopener noreferrer" class="card" style="cursor:pointer;"> 
-      <img src="TWITCH.png" alt="Twitch" style="max-height:40px; vertical-align: middle; margin-right: 8px;"> Twitch Live
-    </a>
-    <a href="https://kick.com/nwrp" target="_blank" rel="noopener noreferrer" class="card" style="cursor:pointer;"> 
-      <img src="KICK.png" alt="Kick" style="max-height:40px; vertical-align: middle; margin-right: 8px;"> Kick Live
-    </a>
-  </div>
-</section>
-
-<section id="community" class="community-section">
-  <h2>Community</h2>
-  <p>Wir freuen uns über jeden neuen Spieler in unserem Rollenspiel! Schließe dich uns an und erlebe spannende Geschichten.</p>
-</section>
-
-<section id="sonderheiten" class="sonderheiten-section">
-  <h2>Sonderheiten</h2>
-  <div class="platforms">
-    <div class="card">24/7 Roleplay Server</div>
-    <div class="card">Professionelle Leitung</div>
-    <div class="card">Große RP-Community</div>
-  </div>
-</section>
-
-<section id="partner" class="partner-section">
-  <h2>Partner</h2>
-  <p>Hustensaft Management</p>
-</section>
-
-<section id="kontakt" class="contact-section">
-  <h2>Kontakt</h2>
-  <p>Kontakt: <a href="mailto:kontakt@nordwindrp.de">kontakt@nordwindrp.de</a></p>
-</section>
-
-<footer>
-  <p>© 2025 Nordwind RP | NWRP - Alle Rechte vorbehalten</p>
-</footer>
-
 <script>
-  // Flag: Ist gerade live?
-  const live = true; // Ändere auf false, wenn kein Live-Stream läuft
-
-  const content = document.getElementById('content-placeholder');
-
-  if(live){
-    // Wenn live, zeige Player mit Twitch/Kick Umschalter
-    content.innerHTML = `
-      <section id="stream-hero" aria-label="Live Stream Player">
-        <iframe id="player" src="https://player.twitch.tv/?channel=nordwindrp&parent=${location.hostname}" allowfullscreen></iframe>
-        <div id="switch-buttons" aria-label="Stream Plattform wählen">
-          <img src="TWITCH.png" alt="Twitch Stream wählen" id="btn-twitch" class="active" tabindex="0" role="button" aria-pressed="true" />
-          <img src="KICK.png" alt="Kick Stream wählen" id="btn-kick" tabindex="0" role="button" aria-pressed="false" />
-        </div>
-      </section>
-    `;
-
-    const btnTwitch = document.getElementById('btn-twitch');
-    const btnKick = document.getElementById('btn-kick');
-    const player = document.getElementById('player');
-
-    // Twitch URL mit Parent-Param (damit eingebettet funktioniert)
-    const twitchURL = `https://player.twitch.tv/?channel=nordwindrp&parent=${location.hostname}`;
-    // Kick Embed URL
-    const kickURL = `https://player.kick.com/nwrp`;
-
-    btnTwitch.addEventListener('click', () => {
-      player.src = twitchURL;
-      btnTwitch.classList.add('active');
-      btnTwitch.setAttribute('aria-pressed', 'true');
-      btnKick.classList.remove('active');
-      btnKick.setAttribute('aria-pressed', 'false');
+  // Einfache Fade-In Animation für Elemente mit Klasse fade-in
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.fade-in').forEach((el, i) => {
+      setTimeout(() => el.style.opacity = '1', i * 500);
     });
-    btnKick.addEventListener('click', () => {
-      player.src = kickURL;
-      btnKick.classList.add('active');
-      btnKick.setAttribute('aria-pressed', 'true');
-      btnTwitch.classList.remove('active');
-      btnTwitch.setAttribute('aria-pressed', 'false');
-    });
-
-    // Tastatursteuerung (Enter / Space)
-    [btnTwitch, btnKick].forEach(btn => {
-      btn.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          btn.click();
-        }
-      });
-    });
-
-  } else {
-    // Wenn nicht live, zeige den regulären Hero-Bereich
-    content.innerHTML = `
-      <section class="hero" id="home" role="banner" aria-label="Willkommensbereich">
-        <h1>Willkommen bei Nordwind Roleplay</h1>
-        <p>Deine Rollenspiel-Community mit Leidenschaft und Herz.</p>
-        <a href="#server" class="cta-btn">Mehr erfahren</a>
-      </section>
-    `;
-  }
+  });
 </script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<body>
+  <header class="header">
+    <div class="logo">NWRP</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Start</a></li>
+        <li><a href="#server">Server</a></li>
+        <li><a href="https://roleplay.hustensaft.org/gesetz/" target="_blank" rel="noopener noreferrer">RP Gesetz</a></li>
+        <li><a href="https://roleplay.hustensaft.org/docs/" target="_blank" rel="noopener noreferrer">Dokumentation</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#sonderheiten">Sonderheiten</a></li>
+        <li><a href="#partner">Partner</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="https://shop.hustensaft.org" target="_blank" rel="noopener noreferrer">Merch</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <section id="home" class="hero">
+    <h1 class="fade-in" style="opacity:0;">Willkommen bei Nordwind Roleplay</h1>
+    <p class="fade-in" style="opacity:0;">Dein realistisches Roleplay Erlebnis</p>
+    <a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer" class="cta-btn slide-in">Jetzt beitreten</a>
+  </section>
+
+  <section id="server" class="server-section">
+    <h2>Unsere Plattformen</h2>
+    <div class="platforms">
+      <a href="https://www.twitch.tv/nordwindrp" target="_blank" rel="noopener noreferrer" class="card" style="cursor:pointer;"> 
+        <img src="TWITCH.png" alt="Twitch" style="max-height:40px; vertical-align:middle;" /> Twitch
+      </a>
+      <a href="https://kick.com/nwrp" target="_blank" rel="noopener noreferrer" class="card" style="cursor:pointer;">
+        <img src="KICK.png" alt="Kick" style="max-height:40px; vertical-align:middle;" /> Kick
+      </a>
+      <a href="https://www.youtube.com/channel/UCY..." target="_blank" rel="noopener noreferrer" class="card" style="cursor:pointer;">
+        <img src="YOUTUBE.png" alt="YouTube" style="max-height:40px; vertical-align:middle;" /> YouTube
+      </a>
+      <a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer" class="card" style="cursor:pointer;">
+        <img src="DISCORD.png" alt="Discord" style="max-height:40px; vertical-align:middle;" /> Discord
+      </a>
+    </div>
+  </section>
+
+  <!-- Partner-Bereich vor Sonderheiten -->
+  <section id="partner" tabindex="-1">
+    <h2>Partner</h2>
+    <div class="partner-container">
+      <div class="partner-card">
+        <img src="SWN.png" alt="SWN Logo" />
+        <p>SWN</p>
+      </div>
+      <div class="partner-card">
+        <img src="DB.png" alt="Deutsche Bahn Logo" />
+        <p>Deutsche Bahn</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sonderheiten" tabindex="-1">
+    <h2>Sonderheiten</h2>
+    <div class="card">Eigenes Framework &amp; Scripts</div>
+    <div class="card">Community Events &amp; Wettbewerbe</div>
+    <div class="card">Regelmäßige Updates</div>
+    <div class="card">Erfahrenes Team &amp; Support</div>
+  </section>
+
+  <section id="community" tabindex="-1">
+    <h2>Community</h2>
+    <div class="card">Engagierte Spieler</div>
+    <div class="card">Regelmäßige Events</div>
+    <div class="card">Hilfsbereites Team</div>
+  </section>
+
+  <section id="kontakt" class="contact-section" tabindex="-1">
+    <h2>Kontakt</h2>
+    <p>Schreib uns gerne eine E-Mail an <a href="mailto:kontakt@nwrp.de">kontakt@nwrp.de</a> oder besuche unseren <a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer">Discord</a>.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Nordwind Roleplay | NWRP — Alle Rechte vorbehalten
+  </footer>
 </body>
 </html>
