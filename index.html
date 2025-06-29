@@ -100,57 +100,6 @@
     color: #fff;
   }
 
-  /* Player Container */
-  .player-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-  .player-wrapper {
-    position: relative;
-    width: 560px;
-    height: 315px;
-    background: #000;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 15px #ffa500;
-  }
-  .player-wrapper.minimized {
-    width: 150px;
-    height: 85px;
-    opacity: 0.6;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-  }
-  .player-wrapper.minimized:hover {
-    opacity: 1;
-  }
-  iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  /* Switch Button unter den Playern */
-  .player-switch {
-    margin-top: 1rem;
-    text-align: center;
-  }
-  .player-switch img {
-    width: 40px;
-    height: 40px;
-    margin: 0 15px;
-    cursor: pointer;
-    filter: brightness(0.7);
-    transition: filter 0.3s ease;
-  }
-  .player-switch img.active,
-  .player-switch img:hover {
-    filter: brightness(1);
-  }
-
   /* Sections */
   section {
     padding: 3rem 2rem;
@@ -262,160 +211,175 @@
     .hero p {
       font-size: 1.1rem;
     }
-    .player-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    .player-wrapper, .player-wrapper.minimized {
-      width: 100%;
-      height: auto;
-    }
-    .player-wrapper.minimized {
-      height: 56px; /* 150:85 scaled */
-    }
-    iframe {
-      height: 315px;
-      max-width: 100%;
-    }
+  }
+
+  /* Stream Player Styles */
+  #stream-hero {
+    background: #000;
+    padding: 1rem;
+    max-width: 1280px;
+    margin: 2rem auto 4rem;
+    border-radius: 12px;
+    box-shadow: 0 0 30px #ffa500;
+    position: relative;
+  }
+  #player {
+    width: 100%;
+    height: 720px;
+    border: none;
+    border-radius: 12px;
+  }
+  #switch-buttons {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 12px;
+    background: rgba(18, 18, 18, 0.85);
+    padding: 6px 10px;
+    border-radius: 25px;
+    box-shadow: 0 0 15px #ffa500;
+  }
+  #switch-buttons img {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    filter: brightness(0.7);
+    transition: filter 0.3s ease;
+  }
+  #switch-buttons img.active,
+  #switch-buttons img:hover {
+    filter: brightness(1);
   }
 </style>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Ob der Stream live ist (true/false)
-    const live = true;  // <-- Hier live true oder false einstellen
 
-    const heroSection = document.getElementById('home');
-
-    if (live) {
-      // Player HTML (Twitch und Kick)
-      heroSection.innerHTML = `
-        <div class="player-container">
-          <div id="twitch-player" class="player-wrapper">
-            <iframe
-              src="https://player.twitch.tv/?channel=nordwindrp&parent=${window.location.hostname}&autoplay=false&muted=false"
-              allowfullscreen
-              scrolling="no"
-              frameborder="0"
-              allow="autoplay; fullscreen"
-            ></iframe>
-          </div>
-          <div id="kick-player" class="player-wrapper minimized" style="display:none;">
-            <iframe
-              src="https://kick.com/embed/nwrp?autoplay=0"
-              allowfullscreen
-              scrolling="no"
-              frameborder="0"
-              allow="autoplay; fullscreen"
-            ></iframe>
-          </div>
-        </div>
-        <div class="player-switch">
-          <img src="TWITCH.png" alt="Twitch" id="btn-twitch" class="active" title="Zu Twitch wechseln" />
-          <img src="https://kick.com/favicon.ico" alt="Kick" id="btn-kick" title="Zu Kick wechseln" />
-        </div>
-      `;
-
-      const btnTwitch = document.getElementById('btn-twitch');
-      const btnKick = document.getElementById('btn-kick');
-      const twitchPlayer = document.getElementById('twitch-player');
-      const kickPlayer = document.getElementById('kick-player');
-
-      // Funktion um Player zu wechseln
-      function switchTo(player) {
-        if (player === 'twitch') {
-          twitchPlayer.style.display = 'block';
-          kickPlayer.style.display = 'none';
-          twitchPlayer.classList.remove('minimized');
-          kickPlayer.classList.add('minimized');
-          btnTwitch.classList.add('active');
-          btnKick.classList.remove('active');
-        } else {
-          twitchPlayer.style.display = 'none';
-          kickPlayer.style.display = 'block';
-          twitchPlayer.classList.add('minimized');
-          kickPlayer.classList.remove('minimized');
-          btnTwitch.classList.remove('active');
-          btnKick.classList.add('active');
-        }
-      }
-
-      btnTwitch.addEventListener('click', () => switchTo('twitch'));
-      btnKick.addEventListener('click', () => switchTo('kick'));
-
-      // Start mit Twitch
-      switchTo('twitch');
-    }
-    // else bleibt alles wie gehabt (Willkommenstext)
-  });
-</script>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="header">
-    <div class="logo">NWRP</div>
-    <nav>
-      <ul>
-        <li><a href="#home">Start</a></li>
-        <li><a href="#server">Server</a></li>
-        <li><a href="https://roleplay.hustensaft.org/gesetz/" target="_blank" rel="noopener noreferrer">RP Gesetz</a></li>
-        <li><a href="https://roleplay.hustensaft.org/docs/" target="_blank" rel="noopener noreferrer">Dokumentation</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#sonderheiten">Sonderheiten</a></li>
-        <li><a href="#partner">Partner</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="https://shop.hustensaft.org" target="_blank" rel="noopener noreferrer">Merch</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section id="home" class="hero">
-    <h1 class="fade-in" style="opacity:0;">Willkommen bei Nordwind Roleplay</h1>
-    <p class="fade-in" style="opacity:0;">Dein realistisches Roleplay Erlebnis</p>
-    <a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer" class="cta-btn">Tritt unserer Community bei</a>
-  </section>
+<header class="header">
+  <div class="logo">NWRP</div>
+  <nav>
+    <ul>
+      <li><a href="#home">Start</a></li>
+      <li><a href="#server">Server</a></li>
+      <li><a href="https://roleplay.hustensaft.org/gesetz/" target="_blank" rel="noopener noreferrer">RP Gesetz</a></li>
+      <li><a href="https://roleplay.hustensaft.org/docs/" target="_blank" rel="noopener noreferrer">Dokumentation</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#sonderheiten">Sonderheiten</a></li>
+      <li><a href="#partner">Partner</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="https://shop.hustensaft.org" target="_blank" rel="noopener noreferrer">Merch</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <section id="server">
-    <h2>Server</h2>
-    <div class="platforms">
-      <div class="card"><a href="https://steamcommunity.com/app/1685850" target="_blank" rel="noopener noreferrer"><img src="steam.png" alt="Steam" /> Steam</a></div>
-      <div class="card"><a href="https://nordwindrp.com/launcher" target="_blank" rel="noopener noreferrer"><img src="launcher.png" alt="Launcher" /> Launcher</a></div>
-      <div class="card">Roleplay auf GTA V</div>
-    </div>
-  </section>
+<!-- Hier wird entweder Hero oder Stream Player eingeblendet -->
+<div id="content-placeholder"></div>
 
-  <section id="community">
-    <h2>Community</h2>
-    <div class="platforms">
-      <div class="card"><a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer"><img src="discord.png" alt="Discord" /> Discord</a></div>
-      <div class="card"><a href="https://www.twitch.tv/nordwindrp" target="_blank" rel="noopener noreferrer"><img src="twitch.png" alt="Twitch" /> Twitch</a></div>
-      <div class="card"><a href="https://kick.com/nwrp" target="_blank" rel="noopener noreferrer"><img src="kick.png" alt="Kick" /> Kick</a></div>
-    </div>
-  </section>
+<section id="server" class="server-section">
+  <h2>Unsere Plattformen</h2>
+  <div class="platforms">
+    <a href="https://www.twitch.tv/nordwindrp" target="_blank" rel="noopener noreferrer" class="card" style="cursor:pointer;"> 
+      <img src="TWITCH.png" alt="Twitch" style="max-height:40px; vertical-align: middle; margin-right: 8px;"> Twitch Live
+    </a>
+    <a href="https://kick.com/nwrp" target="_blank" rel="noopener noreferrer" class="card" style="cursor:pointer;"> 
+      <img src="KICK.png" alt="Kick" style="max-height:40px; vertical-align: middle; margin-right: 8px;"> Kick Live
+    </a>
+  </div>
+</section>
 
-  <section id="sonderheiten">
-    <h2>Sonderheiten</h2>
-    <div class="platforms">
-      <div class="card">Custom Scripts</div>
-      <div class="card">Individuelles Storytelling</div>
-      <div class="card">Reale RP Gesetze</div>
-    </div>
-  </section>
+<section id="community" class="community-section">
+  <h2>Community</h2>
+  <p>Wir freuen uns über jeden neuen Spieler in unserem Rollenspiel! Schließe dich uns an und erlebe spannende Geschichten.</p>
+</section>
 
-  <section id="partner">
-    <h2>Partner</h2>
-    <div class="platforms">
-      <div class="card"><a href="https://hustensaft.org" target="_blank" rel="noopener noreferrer">Hustensaft Management</a></div>
-      <div class="card"><a href="https://nebulagaming.de" target="_blank" rel="noopener noreferrer">Nebula Gaming</a></div>
-    </div>
-  </section>
+<section id="sonderheiten" class="sonderheiten-section">
+  <h2>Sonderheiten</h2>
+  <div class="platforms">
+    <div class="card">24/7 Roleplay Server</div>
+    <div class="card">Professionelle Leitung</div>
+    <div class="card">Große RP-Community</div>
+  </div>
+</section>
 
-  <section id="kontakt" class="contact-section">
-    <h2>Kontakt</h2>
-    <p>Fragen? Schreib uns: <a href="mailto:kontakt@nordwindrp.de">kontakt@nordwindrp.de</a></p>
-  </section>
+<section id="partner" class="partner-section">
+  <h2>Partner</h2>
+  <p>Hustensaft Management</p>
+</section>
 
-  <footer>
-    &copy; 2025 Nordwind Roleplay | NWRP – Alle Rechte vorbehalten
-  </footer>
+<section id="kontakt" class="contact-section">
+  <h2>Kontakt</h2>
+  <p>Kontakt: <a href="mailto:kontakt@nordwindrp.de">kontakt@nordwindrp.de</a></p>
+</section>
+
+<footer>
+  <p>© 2025 Nordwind RP | NWRP - Alle Rechte vorbehalten</p>
+</footer>
+
+<script>
+  // Flag: Ist gerade live?
+  const live = true; // Ändere auf false, wenn kein Live-Stream läuft
+
+  const content = document.getElementById('content-placeholder');
+
+  if(live){
+    // Wenn live, zeige Player mit Twitch/Kick Umschalter
+    content.innerHTML = `
+      <section id="stream-hero" aria-label="Live Stream Player">
+        <iframe id="player" src="https://player.twitch.tv/?channel=nordwindrp&parent=${location.hostname}" allowfullscreen></iframe>
+        <div id="switch-buttons" aria-label="Stream Plattform wählen">
+          <img src="TWITCH.png" alt="Twitch Stream wählen" id="btn-twitch" class="active" tabindex="0" role="button" aria-pressed="true" />
+          <img src="KICK.png" alt="Kick Stream wählen" id="btn-kick" tabindex="0" role="button" aria-pressed="false" />
+        </div>
+      </section>
+    `;
+
+    const btnTwitch = document.getElementById('btn-twitch');
+    const btnKick = document.getElementById('btn-kick');
+    const player = document.getElementById('player');
+
+    // Twitch URL mit Parent-Param (damit eingebettet funktioniert)
+    const twitchURL = `https://player.twitch.tv/?channel=nordwindrp&parent=${location.hostname}`;
+    // Kick Embed URL
+    const kickURL = `https://player.kick.com/nwrp`;
+
+    btnTwitch.addEventListener('click', () => {
+      player.src = twitchURL;
+      btnTwitch.classList.add('active');
+      btnTwitch.setAttribute('aria-pressed', 'true');
+      btnKick.classList.remove('active');
+      btnKick.setAttribute('aria-pressed', 'false');
+    });
+    btnKick.addEventListener('click', () => {
+      player.src = kickURL;
+      btnKick.classList.add('active');
+      btnKick.setAttribute('aria-pressed', 'true');
+      btnTwitch.classList.remove('active');
+      btnTwitch.setAttribute('aria-pressed', 'false');
+    });
+
+    // Tastatursteuerung (Enter / Space)
+    [btnTwitch, btnKick].forEach(btn => {
+      btn.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+
+  } else {
+    // Wenn nicht live, zeige den regulären Hero-Bereich
+    content.innerHTML = `
+      <section class="hero" id="home" role="banner" aria-label="Willkommensbereich">
+        <h1>Willkommen bei Nordwind Roleplay</h1>
+        <p>Deine Rollenspiel-Community mit Leidenschaft und Herz.</p>
+        <a href="#server" class="cta-btn">Mehr erfahren</a>
+      </section>
+    `;
+  }
+</script>
+
 </body>
 </html>
