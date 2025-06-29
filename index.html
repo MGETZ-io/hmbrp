@@ -2,215 +2,81 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nordwind RP – Willkommen</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #0d1117;
-      color: #f0f6fc;
-      scroll-behavior: smooth;
-    }
-    header {
-      background: linear-gradient(to right, #0099ff, #6610f2);
-      padding: 3rem 2rem;
-      text-align: center;
-      color: white;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      letter-spacing: 2px;
-    }
-    section {
-      padding: 5rem 2rem;
-      max-width: 800px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      color: #58a6ff;
-      margin-bottom: 1rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nordwind Roleplay | NWRP</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <header>
-    <h1>Nordwind RP (NWRP)</h1>
-    <p>Dein realistisches Roleplay-Erlebnis in Hamburg</p>
+  <header class="header">
+    <div class="logo">NWRP</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Start</a></li>
+        <li><a href="#server">Server</a></li>
+        <li><a href="https://roleplay.hustensaft.org/gesetz/" target="_blank" rel="noopener noreferrer">RP Gesetz</a></li>
+        <li><a href="https://roleplay.hustensaft.org/docs/" target="_blank" rel="noopener noreferrer">Dokumentation</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#sonderheiten">Sonderheiten</a></li>
+        <li><a href="#partner">Partner</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="https://shop.hustensaft.org" target="_blank" rel="noopener noreferrer">Merch</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section id="willkommen">
-    <h2>Willkommen bei NWRP</h2>
-    <p>Nordwind RP ist ein hochwertiger Roleplay-Server mit Fokus auf Realismus, Community und Spielspaß. Bei uns erlebst du Hamburg wie nie zuvor – mit Polizei, Feuerwehr, Zivilleben und Wirtschaftssystem!</p>
+  <section id="home" class="hero">
+    <h1 class="fade-in">Willkommen bei Nordwind Roleplay</h1>
+    <p class="fade-in">Dein realistisches Roleplay Erlebnis</p>
+    <a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer" class="cta-btn slide-in">Jetzt beitreten</a>
   </section>
 
-  <section id="regeln">
-    <h2>Unsere Regeln</h2>
-    <p>Wir legen Wert auf Fairness und Immersion. Dazu gehören: Kein FailRP, kein RDM/VDM, IC ≠ OOC, und respektvoller Umgang unter allen Mitspielern.</p>
+  <section id="server" class="server-section">
+    <h2>Unsere Plattformen</h2>
+    <div class="platforms">
+      <a href="https://www.twitch.tv/nordwindrp" target="_blank" rel="noopener noreferrer" class="card">Twitch Live</a>
+      <a href="https://kick.com/nwrp" target="_blank" rel="noopener noreferrer" class="card">Kick Stream</a>
+      <a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer" class="card">Discord Community</a>
+    </div>
   </section>
 
-  <section id="features">
-    <h2>Besondere Features</h2>
-    <ul>
-      <li>🚓 Eigene Polizei- & Feuerwehr-Fahrzeuge</li>
-      <li>🏙️ Realistische Stadtumgebung (Hamburg)</li>
-      <li>💼 Wirtschaft mit Banken & Firmen</li>
-      <li>🎭 Whitelist-System & Charaktererstellung</li>
-      <li>📱 Eigene Ingame-Apps & Captive Portal</li>
-    </ul>
+  <section id="community" class="community-section">
+    <h2>Unsere Community</h2>
+    <p>Werde Teil von NWRP und erlebe spannende Roleplay Geschichten mit anderen.</p>
+    <p><strong>Hinweis:</strong> Wir kommunizieren ausschließlich über den Instant Messenger <a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer">Discord</a>.</p>
   </section>
 
-  <section id="einstieg">
-    <h2>So steigst du ein</h2>
-    <p>Erstelle dir einen Charakter auf unserer Website und lade das NWRP-Modpack herunter. Danach kannst du dich direkt ins Roleplay stürzen!</p>
+  <section id="sonderheiten" class="sonder-section">
+    <h2>Sonderheiten bei NWRP</h2>
+    <p>Erlebe bei uns einzigartige Features, realistische Wirtschaftssysteme, spannende Fraktionen und Events, die es so nur bei Nordwind Roleplay gibt.</p>
+    <div class="platforms">
+      <div class="card">Realistische Einsatzszenarien</div>
+      <div class="card">Dynamische Events</div>
+      <div class="card">Individuelle Fraktionssysteme</div>
+    </div>
   </section>
 
-  <section id="kontakt">
-    <h2>Kontakt & Community</h2>
-    <p>Besuche unseren <a href="https://discord.gg/S2apzd343K" target="_blank" style="color:#58a6ff;">Discord-Server</a> für Support, News und Bewerbung.</p>
+  <section id="partner" class="partner-section">
+    <h2>Unsere Partner</h2>
+    <div class="platforms">
+      <div class="card">H2M</div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Stadtwerke_Neumuenster_Logo.svg/2560px-Stadtwerke_Neumuenster_Logo.svg.png" alt="Stadtwerke Neumünster" style="max-height: 50px;" />
+      </div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Deutsche_Bahn_AG-Logo.svg/2560px-Deutsche_Bahn_AG-Logo.svg.png" alt="Deutsche Bahn" style="max-height: 50px;" />
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="contact-section">
+    <h2>Kontakt</h2>
+    <p>Du hast Fragen? Komm auf unseren <a href="https://discord.gg/c6y74Ckt58" target="_blank" rel="noopener noreferrer">Discord Server</a>.</p>
   </section>
 
   <footer>
-    &copy; 2025 Nordwind RP – Powered by Hustensaft Management
+    <p>&copy; 2025 Nordwind Roleplay | NWRP</p>
   </footer>
-
-  <script>
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, {
-      threshold: 0.2
-    });
-
-    sections.forEach(section => observer.observe(section));
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nordwind RP – Willkommen</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #0d1117;
-      color: #f0f6fc;
-      scroll-behavior: smooth;
-    }
-    header {
-      background: linear-gradient(to right, #0099ff, #6610f2);
-      padding: 3rem 2rem;
-      text-align: center;
-      color: white;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      letter-spacing: 2px;
-    }
-    section {
-      padding: 5rem 2rem;
-      max-width: 800px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      color: #58a6ff;
-      margin-bottom: 1rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Nordwind RP (NWRP)</h1>
-    <p>Dein realistisches Roleplay-Erlebnis in Hamburg</p>
-  </header>
-
-  <section id="willkommen">
-    <h2>Willkommen bei NWRP</h2>
-    <p>Nordwind RP ist ein hochwertiger Roleplay-Server mit Fokus auf Realismus, Community und Spielspaß. Bei uns erlebst du Hamburg wie nie zuvor – mit Polizei, Feuerwehr, Zivilleben und Wirtschaftssystem!</p>
-  </section>
-
-  <section id="regeln">
-    <h2>Unsere Regeln</h2>
-    <p>Wir legen Wert auf Fairness und Immersion. Dazu gehören: Kein FailRP, kein RDM/VDM, IC ≠ OOC, und respektvoller Umgang unter allen Mitspielern.</p>
-  </section>
-
-  <section id="features">
-    <h2>Besondere Features</h2>
-    <ul>
-      <li>🚓 Eigene Polizei- & Feuerwehr-Fahrzeuge</li>
-      <li>🏙️ Realistische Stadtumgebung (Hamburg)</li>
-      <li>💼 Wirtschaft mit Banken & Firmen</li>
-      <li>🎭 Whitelist-System & Charaktererstellung</li>
-      <li>📱 Eigene Ingame-Apps & Captive Portal</li>
-    </ul>
-  </section>
-
-  <section id="einstieg">
-    <h2>So steigst du ein</h2>
-    <p>Erstelle dir einen Charakter auf unserer Website und lade das NWRP-Modpack herunter. Danach kannst du dich direkt ins Roleplay stürzen!</p>
-  </section>
-
-  <section id="kontakt">
-    <h2>Kontakt & Community</h2>
-    <p>Besuche unseren <a href="https://discord.gg/S2apzd343K" target="_blank" style="color:#58a6ff;">Discord-Server</a> für Support, News und Bewerbung.</p>
-  </section>
-
-  <footer>
-    &copy; <button onclick="location.href='https://roleplay.hustensaft.org/gesetz/';">Das Gesetz!</button>
-    &copy; <button onclick="location.href='https://roleplay.hustensaft.org/docs/';">Das Hilfe-Handbuch!</button>
-    &copy; 2025 Nordwind RP – Powered by Hustensaft Management
-  </footer>
-
-  <script>
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, {
-      threshold: 0.2
-    });
-
-    sections.forEach(section => observer.observe(section));
-  </script>
 </body>
 </html>
