@@ -1,196 +1,153 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nordwind Roleplay | NWRP</title>
-<style>
-  body {
-    margin: 0; 
-    font-family: 'Roboto', sans-serif;
-    background: #121212;
-    color: #eee;
-    line-height: 1.6;
-    text-align: center;
-  }
-  .header {
-    background: #1f1f1f;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.7);
-  }
-  .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #ffa500;
-    user-select: none;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    padding-left: 0;
-    margin: 0;
-  }
-  nav ul li a {
-    color: #ffa500;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  nav ul li a:hover {
-    background-color: #ffa500;
-    color: #121212;
-  }
-  
-  /* Stream Bereich */
-  #stream-container {
-    background: #000;
-    padding: 1rem;
-  }
-  #stream-switcher {
-    margin-bottom: 0.5rem;
-  }
-  #stream-switcher button {
-    background: #222;
-    border: 1px solid #ffa500;
-    color: #ffa500;
-    padding: 0.4rem 1rem;
-    margin: 0 0.3rem;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
-  }
-  #stream-switcher button.active,
-  #stream-switcher button:hover {
-    background-color: #ffa500;
-    color: #121212;
-  }
-  iframe {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #ffa500;
-    max-width: 100%;
-  }
-  iframe.twitch, iframe.kick {
-    width: 640px;
-    height: 360px;
-  }
-
-  /* Willkommenstext */
-  #welcome-text {
-    padding: 3rem 1rem 4rem;
-    background: linear-gradient(135deg, #ffa500, #ff4500);
-    color: #121212;
-  }
-  #welcome-text h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
-  #welcome-text p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  #welcome-text .cta-btn {
-    font-weight: 700;
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
-    background: #121212;
-    color: #ffa500;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #ffa500;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    display: inline-block;
-    text-decoration: none;
-  }
-  #welcome-text .cta-btn:hover {
-    background: #ff4500;
-    box-shadow: 0 0 25px #ff4500;
-    color: #fff;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nordwind Roleplay | NWRP</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Stream-Container Styling */
+    #stream-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1280px;
+    }
+    #stream-container.hidden {
+      display: none;
+    }
+    #stream-container iframe {
+      border: none;
+      width: 45%;
+      height: 360px;
+      background: #000;
+    }
+    /* Willkommenstext Styling */
+    #home {
+      text-align: center;
+      margin: 40px 20px;
+    }
+  </style>
 </head>
 <body>
+  <header class="header">
+    <div class="logo">NWRP</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Start</a></li>
+        <li><a href="#server">Server</a></li>
+        <li><a href="https://roleplay.hustensaft.org/gesetz/" target="_blank">RP Gesetz</a></li>
+        <li><a href="https://roleplay.hustensaft.org/docs/" target="_blank">Dokumentation</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#sonderheiten">Sonderheiten</a></li>
+        <li><a href="#partner">Partner</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="https://shop.hustensaft.org" target="_blank">Merch</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header class="header">
-  <div class="logo">Nordwind Roleplay</div>
-  <nav>
-    <ul>
-      <li><a href="#partner">Partner</a></li>
-      <li><a href="#sonderheiten">Sonderheiten</a></li>
-      <li><a href="#server">Server</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- Stream Bereich -->
-<div id="stream-container" style="display:none;">
-  <div id="stream-switcher">
-    <button id="btn-twitch" class="active">Twitch</button>
-    <button id="btn-kick">Kick</button>
+  <!-- Stream-Embed Bereich -->
+  <div id="stream-container" class="hidden">
+    <iframe
+      id="twitch-embed"
+      src=""
+      allowfullscreen="true"
+      scrolling="no"
+      title="Twitch Stream"
+    ></iframe>
+    <iframe
+      id="kick-embed"
+      src=""
+      allowfullscreen="true"
+      scrolling="no"
+      title="Kick Stream"
+    ></iframe>
   </div>
-  <iframe
-    id="stream-iframe"
-    class="twitch"
-    src="https://player.twitch.tv/?channel=nordwindrp&parent=roleplay.hustensaft.org
-    allowfullscreen="true"
-    scrolling="no"
-    frameborder="0"
-  ></iframe>
-</div>
 
-<!-- Willkommenstext -->
-<div id="welcome-text" style="display:none;">
-  <h1>Willkommen bei Nordwind Roleplay</h1>
-  <p>Dein realistisches Roleplay Erlebnis</p>
-  <a href="#jetzt-beitreten" class="cta-btn">Jetzt beitreten</a>
-</div>
+  <!-- Willkommenstext Bereich -->
+  <section id="home" class="hero">
+    <h1 class="fade-in">Willkommen bei Nordwind Roleplay</h1>
+    <p class="fade-in">Dein realistisches Roleplay Erlebnis</p>
+    <a href="https://discord.gg/c6y74Ckt58" target="_blank" class="cta-btn slide-in">Jetzt beitreten</a>
+  </section>
 
-<script>
-  // Live Status steuern (true = live, false = offline)
-  const live = false; // Hier kannst du live auf false setzen zum testen
+  <section id="server" class="server-section">
+    <h2>Unsere Plattformen</h2>
+    <div class="platforms">
+      <a href="https://www.twitch.tv/nordwindrp" target="_blank" class="card">Twitch Live</a>
+      <a href="https://kick.com/nwrp" target="_blank" class="card">Kick Stream</a>
+      <a href="https://discord.gg/c6y74Ckt58" target="_blank" class="card">Discord Community</a>
+    </div>
+  </section>
 
-  const streamContainer = document.getElementById('stream-container');
-  const welcomeText = document.getElementById('welcome-text');
-  const btnTwitch = document.getElementById('btn-twitch');
-  const btnKick = document.getElementById('btn-kick');
-  const iframe = document.getElementById('stream-iframe');
+  <section id="community" class="community-section">
+    <h2>Unsere Community</h2>
+    <p>Werde Teil von NWRP und erlebe spannende Roleplay Geschichten mit anderen.</p>
+    <p><strong>Hinweis:</strong> Wir kommunizieren ausschließlich über den Instant Messenger <a href="https://discord.gg/c6y74Ckt58" target="_blank">Discord</a>.</p>
+  </section>
 
-  if (live) {
-    // Stream-Bereich zeigen
-    streamContainer.style.display = 'block';
-    welcomeText.style.display = 'none';
-  } else {
-    // Willkommenstext zeigen
-    streamContainer.style.display = 'none';
-    welcomeText.style.display = 'block';
-  }
+  <section id="sonderheiten" class="sonder-section">
+    <h2>Sonderheiten bei NWRP</h2>
+    <p>Erlebe bei uns einzigartige Features, realistische Wirtschaftssysteme, spannende Fraktionen und Events, die es so nur bei Nordwind Roleplay gibt.</p>
+    <div class="platforms">
+      <div class="card">Realistische Einsatzszenarien</div>
+      <div class="card">Dynamische Events</div>
+      <div class="card">Individuelle Fraktionssysteme</div>
+    </div>
+  </section>
 
-  // Stream-Switcher Funktion
-  btnTwitch.addEventListener('click', () => {
-    iframe.src = 'https://player.twitch.tv/?channel=nordwindrp&parent=roleplay.hustensaft.org';
-    iframe.className = 'twitch';
-    btnTwitch.classList.add('active');
-    btnKick.classList.remove('active');
-  });
+  <section id="partner" class="partner-section">
+    <h2>Unsere Partner</h2>
+    <div class="platforms">
+      <div class="card">H2M</div>
+      <div class="card">
+        <img src="SWN.png" alt="Stadtwerke Neumünster" style="max-height: 50px;" />
+      </div>
+      <div class="card">
+        <img src="DB.png" alt="Deutsche Bahn" style="max-height: 50px;" />
+      </div>
+    </div>
+  </section>
 
-  btnKick.addEventListener('click', () => {
-    iframe.src = 'https://player.kick.com/nwrp';
-    iframe.className = 'kick';
-    btnKick.classList.add('active');
-    btnTwitch.classList.remove('active');
-  });
-</script>
+  <section id="kontakt" class="contact-section">
+    <h2>Kontakt</h2>
+    <p>Du hast Fragen? Komm auf unseren <a href="https://discord.gg/c6y74Ckt58" target="_blank">Discord Server</a>.</p>
+  </section>
 
+  <footer>
+    <p>&copy; 2025 Nordwind Roleplay | NWRP</p>
+  </footer>
+
+  <script>
+    // live = true: Streams anzeigen; live = false: nur Willkommenstext anzeigen
+    const live = true; // Ändere hier auf false, wenn nicht live
+
+    const streamContainer = document.getElementById("stream-container");
+    const homeSection = document.getElementById("home");
+    const twitchEmbed = document.getElementById("twitch-embed");
+    const kickEmbed = document.getElementById("kick-embed");
+
+    if (live) {
+      streamContainer.classList.remove("hidden");
+      homeSection.style.display = "none";
+
+      const domain = window.location.hostname;
+      twitchEmbed.src = `https://player.twitch.tv/?channel=nordwindrp&parent=roleplay.hustensaft.org`;
+      kickEmbed.src = "https://kick.com/embed/channel/nwrp";
+    } else {
+      streamContainer.classList.add("hidden");
+      homeSection.style.display = "block";
+
+      twitchEmbed.src = "";
+      kickEmbed.src = "";
+    }
+  </script>
 </body>
 </html>
